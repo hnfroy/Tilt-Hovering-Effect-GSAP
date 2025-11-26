@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+# 3D Interactive Carousel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and interactive 3D carousel built with **React**, **GSAP**, and **Draggable**.  
+This carousel supports smooth horizontal scrolling, tilt & scale effects, floating animations, and clickable cards that snap to the center before opening links.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **3D Tilt & Scale**: Cards tilt based on their position relative to the center.
+- **Floating Animation**: Each card gently floats up and down independently.
+- **Horizontal Scroll**: Scroll horizontally using mouse, trackpad, or drag gestures.
+- **Draggable**: Click-and-drag to scroll the carousel.
+- **Clickable Cards**: Cards snap to the center first; clicking again opens the link.
+- **Responsive**: Works on desktop and mobile with dynamic card sizing.
+- **Custom Content Support**: Easily attach links or additional info to each card.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Add your own images in `src/assets` or via URLs and provide them in the `cards` array in `Carousel`:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Clone the repository:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+git clone https://github.com/yourusername/3d-carousel.git
+cd 3d-carousel
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Install dependencies:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+npm install
+# or
+yarn
+
+
+Start the development server:
+
+npm run dev
+# or
+yarn dev
+
+Usage
+import Carousel from "./components/carousel/Carousel";
+
+const cards = [
+  { img: "/1.png", href: "https://example.com/1" },
+  { img: "/2.png", href: "https://example.com/2" },
+  { img: "/3.png", href: "https://example.com/3" },
+  { img: "/4.png", href: "https://example.com/4" },
+];
+
+export default function Home() {
+  return (
+    <div className="w-full h-screen overflow-hidden bg-black flex items-center justify-center">
+      <Carousel cards={cards} />
+    </div>
+  );
+}
+
+Technologies
+
+React
+
+GSAP
+
+GSAP Draggable
+
+ScrollTrigger
+
+TypeScript
+
+TailwindCSS (optional for styling)
